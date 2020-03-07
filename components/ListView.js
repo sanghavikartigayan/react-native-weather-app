@@ -46,8 +46,10 @@ function ListView({onInitWeatherData, data, error, loading, message, navigation}
                          )
                              : 
                         (
-                            <View>
-                                <Text>No data</Text>
+                            <View style={styles.topSection}>
+                                <View style={styles.card}>
+                                    <Text style={styles.subTitle2}>No data</Text>
+                                </View>
                             </View>
                         )  
                         }
@@ -58,7 +60,7 @@ function ListView({onInitWeatherData, data, error, loading, message, navigation}
                     <Text style={styles.byDate}>By Date</Text>
                     <View style={styles.filterSortSection}>
                         <Icon name='filter' type='font-awesome' color={Colors.white} onPress={() => console.log('filter')} />
-                        <Text>   </Text>
+                        <Text>     </Text>
                         <Icon name='sort' type='font-awesome' color={Colors.white} onPress={() => setSorted(currentState => !currentState)} />
                     </View>
                 </View>
