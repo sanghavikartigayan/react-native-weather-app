@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import { FlatList, View, ImageBackground, StyleSheet, TouchableHighlight, Text} from 'react-native';
 import { initWeatherData } from '../middleware/fetchData';
 import ItemList from './ItemList';
-import Item from './Item';
 import Spinner from 'react-native-loading-spinner-overlay';
 import { Divider } from 'react-native-elements';
 import Colors from '../assets/utils';
 import { Icon } from 'react-native-elements';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 function ListView({onInitWeatherData, data, error, loading, message, navigation}) {
     const date = "2017-07-31";
@@ -40,7 +40,7 @@ function ListView({onInitWeatherData, data, error, loading, message, navigation}
                                     <Text style={styles.subTitle2}>{currentDayData[0].HumidityAvgPercent}° F</Text>
                                 </View>
                                 <View>
-                                    <Text>SVG</Text>
+                                     <MaterialCommunityIcons size={100} name='weather-sunny' color={'#fff'} /> 
                                 </View>
                             </View>
                          )
@@ -85,7 +85,8 @@ const styles = StyleSheet.create({
     },
     topSection: {
         flexDirection:'row',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
+        alignItems: 'center'
     },
     card: {
         padding: 10,

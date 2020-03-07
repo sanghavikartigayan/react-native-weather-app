@@ -48,7 +48,6 @@ function App() {
           </Stack.Navigator>
           </NavigationContainer>
         </ThemeProvider>
-
     </Provider>
     );
 }

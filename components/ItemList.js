@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, TouchableHighlight, StyleSheet, View } from 'react-native';
+import Colors from '../assets/utils';
 
 function ItemList({ item, navigation }) {
     return (
@@ -11,7 +12,7 @@ function ItemList({ item, navigation }) {
                 </View>
                 <View style={styles.RightItem}>
                     <Text style={styles.subtitle}>{item.Events}</Text>
-                    <Text>{item.Date}</Text>
+                    <Text style={{textAlign: 'right'}}>{item.Date}</Text>
                 </View>
             </View>
         </TouchableHighlight>   
@@ -25,19 +26,25 @@ const styles = StyleSheet.create({
     },
     list: {
         flex: 1,
-        padding: 10,
         marginHorizontal: 15,
         marginBottom: 10,
         borderRadius: 15,
         backgroundColor: 'white',
         flexDirection: 'row',
-        justifyContent: 'space-evenly'
+        shadowColor: Colors.secondary
     },
     title: {
-        fontSize: 20
+        fontSize: 22
     },
     subtitle: {
         fontSize: 18
+    },
+    LeftItem: {
+        flex: 2,
+        padding: 20
+    },
+    RightItem: {
+        padding: 20
     }
 })
   export default ItemList;
