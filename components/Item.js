@@ -1,7 +1,6 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, ImageBackground} from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { Container, Content, List, ListItem } from 'native-base';
 
 function Item({ item }) {
     return (
@@ -13,132 +12,15 @@ function Item({ item }) {
             }
             <Text style={styles.tempText}>Temperature F˚</Text>
         </View>
+        <ImageBackground source={{uri: 'http://i.imgur.com/IGlBYaC.jpg'}} style={styles.backgroundImage}>
+                <View style={styles.overlay}/>
+            </ImageBackground>
         <View style={styles.bodyContainer}>
             <Text style={styles.title}>{item.TempAvgF}</Text>
             <Text style={styles.subtitle}>High: {item.TempHighF}  Low: {item.TempLowF}</Text>
-            <Text styel={styles.subtitle}>{item.Date}</Text>
+            <Text style={styles.subtitle}>{item.Date}</Text>
+            {item.Events ? <Text style={styles.subTitle2}>{item.Events}</Text> : null }
         </View>
-        <Container>
-            <Content>
-                <List>
-                    <ListItem itemDivider>
-                        <Text>Dew</Text>
-                    </ListItem>                    
-                    <ListItem>
-                        <View style={styles.contentContainer}>
-                            <Text>Dew Point Avg F˚</Text>
-                            <Text>{item.DewPointAvgF}</Text>
-                        </View>
-                    </ListItem>
-                    <ListItem>
-                        <View style={styles.contentContainer}>
-                            <Text>Dew Point High F˚</Text>
-                            <Text>{item.DewPointHighF}</Text>
-                        </View>
-                    </ListItem>
-                    <ListItem>
-                        <View style={styles.contentContainer}>
-                            <Text>Dew Point Low F˚</Text>
-                            <Text>{item.DewPointLowF}</Text>
-                        </View>
-                    </ListItem>
-                    <ListItem itemDivider>
-                        <Text>Humidity</Text>
-                    </ListItem>                    
-                    <ListItem>
-                        <View style={styles.contentContainer}>
-                            <Text>Humidity Point %</Text>
-                            <Text>{item.HumidityAvgPercent}</Text>
-                        </View>
-                    </ListItem>
-                    <ListItem>
-                        <View style={styles.contentContainer}>
-                            <Text>Humidity High %</Text>
-                            <Text>{item.HumidityHighPercent}</Text>
-                        </View>
-                    </ListItem>
-                    <ListItem>
-                        <View style={styles.contentContainer}>
-                            <Text>Humidity Low %</Text>
-                            <Text>{item.HumidityLowPercent}</Text>
-                        </View>
-                    </ListItem>
-                    <ListItem itemDivider>
-                        <Text>Precipitation</Text>
-                    </ListItem>                    
-                    <ListItem>
-                        <View style={styles.contentContainer}>
-                            <Text>Percipitation Sum Inches</Text>
-                            <Text>{item.PercipitationSumInches}</Text>
-                        </View>
-                    </ListItem>
-                    <ListItem itemDivider>
-                        <Text>Sea Level</Text>
-                    </ListItem>                    
-                    <ListItem>
-                        <View style={styles.contentContainer}>
-                            <Text>Sea Level Pressure Avg Inches</Text>
-                            <Text>{item.SeaLevelPressureAvgInches}</Text>
-                        </View>
-                    </ListItem>
-                    <ListItem>
-                        <View style={styles.contentContainer}>
-                            <Text>Sea Level Pressure High Inches</Text>
-                            <Text>{item.SeaLevelPressureHighInches}</Text>
-                        </View>
-                    </ListItem>
-                    <ListItem>
-                        <View style={styles.contentContainer}>
-                            <Text>Sea Level Pressure Low Inches</Text>
-                            <Text>{item.SeaLevelPressureLowInches}</Text>
-                        </View>
-                    </ListItem>
-                    <ListItem itemDivider>
-                        <Text>Visibility</Text>
-                    </ListItem>                    
-                    <ListItem>
-                        <View style={styles.contentContainer}>
-                            <Text>Visibility Avg Miles</Text>
-                            <Text>{item.VisibilityAvgMiles}</Text>
-                        </View>
-                    </ListItem>
-                    <ListItem>
-                        <View style={styles.contentContainer}>
-                            <Text>Visibility High Miles</Text>
-                            <Text>{item.VisibilityHighMiles}</Text>
-                        </View>
-                    </ListItem>
-                    <ListItem>
-                        <View style={styles.contentContainer}>
-                            <Text>Visibility Low Miles</Text>
-                            <Text>{item.VisibilityLowMiles}</Text>
-                        </View>
-                    </ListItem>
-                    <ListItem itemDivider>
-                        <Text>Wind</Text>
-                    </ListItem>                    
-                    <ListItem>
-                        <View style={styles.contentContainer}>
-                            <Text>Wind Avg MPH</Text>
-                            <Text>{item.WindAvgMPH}</Text>
-                        </View>
-                    </ListItem>
-                    <ListItem>
-                        <View style={styles.contentContainer}>
-                            <Text>Wind Gust MPH</Text>
-                            <Text>{item.WindGustMPH}</Text>
-                        </View>
-                    </ListItem>
-                    <ListItem>
-                        <View style={styles.contentContainer}>
-                            <Text>Wind High MPH</Text>
-                            <Text>{item.WindHighMPH}</Text>
-                        </View>
-                    </ListItem>
-                </List>
-            </Content>
-            <View style={styles.Footer}></View>
-            </Container>
       </View>
     );
   }
@@ -169,7 +51,7 @@ function Item({ item }) {
         color: '#fff',
       },
       subtitle: {
-        fontSize: 12,
+        fontSize: 15,
         color: '#fff'
       },
       contentContainer: {
@@ -182,6 +64,24 @@ function Item({ item }) {
       },
       Footer: {
           marginBottom: 20
-      }
+      },
+      backgroundImage: {
+        flex: 1,
+        width: null,
+        height: null,
+    },
+    overlay: {
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      bottom: 0,
+      left: 0,
+      backgroundColor: 'red',
+      opacity: 0.3
+    },
+    subTitle2: {
+        fontSize: 17,
+        color: '#fff'
+    }
   })
   export default Item;

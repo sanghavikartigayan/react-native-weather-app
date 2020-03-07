@@ -16,7 +16,6 @@ export default function fetchDataReducer(state=initialState, action) {
                 error: false
             };
         case actionTypes.FETCH_WEATHER_DATA_SUCCESS:
-            console.log('in reducer', action.payload);
             return {
                 ...state,
                 data: action.payload,

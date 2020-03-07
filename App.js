@@ -1,14 +1,23 @@
-import React, {useState} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import TableView from './components/TableView';
+import 'react-native-gesture-handler';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import HomePage from './components/HomePage';
+import ListView from './components/ListView';
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './store/reducers';
 import Firebase from 'firebase';
-import { AppLoading } from 'expo';
-import * as Font from 'expo-font';
-import { Ionicons } from '@expo/vector-icons';
+import { ThemeProvider } from 'react-native-elements';
+import Colors from './assets/utils';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+
+const theme = {
+  colors: {
+    primary: Colors.primary,
+  }
+}
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
@@ -26,50 +35,22 @@ var firebaseConfig = {
 const app = Firebase.initializeApp(firebaseConfig);
 export const db = app.database();
 
-const App = (props) => {
+const Stack = createStackNavigator();
 
-  const [isLoadingComplete, setLoadingComplete] = useState(false);
-
-  async function loadResourcesAsync() {
-    await Font.loadAsync({
-      Roboto: require('native-base/Fonts/Roboto.ttf'),
-      Roboto_Medium: require('native-base/Fonts/Roboto_medium.ttf'),
-      ...Ionicons.font,
-    })
-  }
-
-  function handleLoadingError(error) {
-    console.warn(error);
-  }
-
-function handleFinishLoading(setLoadingComplete) {
-  setLoadingComplete(true);
-}
-
-  if (!isLoadingComplete && !props.skipLoadingScreen) {
-    return (
-      <AppLoading
-        startAsync={loadResourcesAsync}
-        onError={handleLoadingError}
-        onFinish={() => handleFinishLoading(setLoadingComplete)}
-      />
-    );
-  } else {
+function App() {
     return (
       <Provider store={store}>
-      <View style={styles.container}>
-        <TableView />
-      </View>
+        <ThemeProvider theme={theme} >
+          <NavigationContainer>
+          <Stack.Navigator intialRouteName="Home">
+            <Stack.Screen name="Home" component={HomePage} />
+            <Stack.Screen name="DateLists" component={ListView} />
+          </Stack.Navigator>
+          </NavigationContainer>
+        </ThemeProvider>
+
     </Provider>
     );
-  }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    paddingVertical: 10,
-    fontFamily: 'Roboto'
-  },
-});
 
 export default App;
