@@ -12,6 +12,7 @@ import { ThemeProvider } from 'react-native-elements';
 import Colors from './assets/utils';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import Item from './components/Item';
 
 const theme = {
   colors: {
@@ -45,6 +46,9 @@ function App() {
           <Stack.Navigator intialRouteName="Home">
             <Stack.Screen name="Home" component={HomePage} />
             <Stack.Screen name="DateLists" component={ListView} />
+            <Stack.Screen name="Date">
+                {props => <Item {...props} />}
+              </Stack.Screen>
           </Stack.Navigator>
           </NavigationContainer>
         </ThemeProvider>

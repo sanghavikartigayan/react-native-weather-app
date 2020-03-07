@@ -8,11 +8,17 @@ import { Divider } from 'react-native-elements';
 import Colors from '../assets/utils';
 import { Icon } from 'react-native-elements';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import DateRangePicker from "react-native-daterange-picker";
+import moment from "moment";
 
 function ListView({onInitWeatherData, data, error, loading, message, navigation}) {
     const date = "2017-07-31";
     const currentDayData = data.filter(d => d.Date == date);
     const [sorted, setSorted] = useState(false);
+    const [startDate, setStartDate] = useState(null);
+    const [endDate, setEndDate] = useState(null);
+    const [displayedDate, setDisplayedDate] = useState(moment);
+    const [filterSelected, setFilterSelected] = useState(false);
 
     if(sorted) {
         data = data.slice().sort((a,b) => b.Date - a.Date);
@@ -25,10 +31,12 @@ function ListView({onInitWeatherData, data, error, loading, message, navigation}
         onInitWeatherData();
     }, [onInitWeatherData]);
 
+console.log(displayedDate);
+
     return (
         <View>
             <ImageBackground source={require('../assets/lineraGradient.png')} style={{width: '100%', height: '100%'}}>
-                <TouchableHighlight style={styles.cardContainer}>
+                <TouchableHighlight style={styles.cardContainer} underlayColor={Colors.primary} onPress={() => navigation.navigate('Date', {Date: currentDayData[0].Date, item: currentDayData[0]})}>
                         {
                          currentDayData[0] ?
                           (
@@ -38,6 +46,7 @@ function ListView({onInitWeatherData, data, error, loading, message, navigation}
                                     <Text style={styles.subTitle}>{currentDayData[0].Events}</Text>
                                     <Text style={styles.subTitle}>Humidity</Text>
                                     <Text style={styles.subTitle2}>{currentDayData[0].HumidityAvgPercent}° F</Text>
+                                    <Text style={styles.subTitle3}>{currentDayData[0].Date}</Text>
                                 </View>
                                 <View>
                                      <MaterialCommunityIcons size={100} name='weather-sunny' color={'#fff'} /> 
@@ -59,10 +68,20 @@ function ListView({onInitWeatherData, data, error, loading, message, navigation}
                 <View style={styles.functionality}>
                     <Text style={styles.byDate}>By Date</Text>
                     <View style={styles.filterSortSection}>
-                        <Icon name='filter' type='font-awesome' color={Colors.white} onPress={() => console.log('filter')} />
+                        { filterSelected ? 
+                            <DateRangePicker
+                            onChange={(date) => setDisplayedDate(date)}
+                            endDate={endDate}
+                            startDate={startDate}
+                            displayedDate={displayedDate}
+                            range>
+                            </DateRangePicker> 
+                        : null}
+                        <Icon name='filter' type='font-awesome' color={Colors.white} onPress={() => setFilterSelected(currentFilter => !currentFilter)} />
                         <Text>     </Text>
                         <Icon name='sort' type='font-awesome' color={Colors.white} onPress={() => setSorted(currentState => !currentState)} />
                     </View>
+        
                 </View>
                 {(!loading && data) ?
                 (<FlatList
@@ -95,9 +114,14 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         flexDirection: 'column',
         justifyContent: 'space-evenly',
-        height: 150,
+        height: 200,
         width: 200,
-        alignItems: 'center'
+        alignItems: 'center',
+        elevation: 4,
+        shadowColor: Colors.black,
+        shadowOffset: { width: 0, height: 2},
+        shadowRadius: 6,
+        shadowOpacity: 0.26,
     },
     divider: {
         backgroundColor: 'white',
@@ -135,13 +159,19 @@ const styles = StyleSheet.create({
     },
     Title: {
         fontSize: 24,
+        textAlign: 'center'
     }, 
     subTitle: {
         fontSize: 20,
+        textAlign: 'center'
     },
     subTitle2: {
         color: Colors.secondary,
-        fontSize: 18
+        fontSize: 18,
+        textAlign: 'center'
+    },
+    subTitle3: {
+        textAlign: 'center'
     },
     byDate: {
         color: Colors.white,
