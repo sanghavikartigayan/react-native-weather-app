@@ -34,10 +34,17 @@ function ListView({onInitWeatherData, data, error, loading, message, navigation}
     }, [onInitWeatherData]);
 
     function applyFilter() {
-        if(filterDay && filterMonth && filterYear &&  filterSelected && !resetFilter) {
+        if(filterDay && filterMonth && filterYear &&  filterSelected) {
+            let newTempData = [...data];
             searchDate = filterYear + '-' + filterMonth + '-' + filterDay;
             setFilterDate(searchDate);
-            setFilteredData(data.filter(i => i.Date === searchDate));  
+            newTempData = data.filter(i => i.Date === searchDate);
+            setFilterDay(null);
+            setFilterMonth(null);
+            setFilterYear(null);
+            searchDate = null;
+            setFilterDate(null);
+            setFilteredData(newTempData); 
         } else {
             resetFilterCall();
         }

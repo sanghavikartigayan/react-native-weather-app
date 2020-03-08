@@ -4,7 +4,7 @@ import {db} from '../App';
 export const initWeatherData = () => {
     return function(dispatch) {
         dispatch(fetchWeatherDataPending())
-        db.ref('/weather').once('value', function (snapshot) {
+        db.ref('/weather').on('value', function (snapshot) {
             dispatch(fetchWeatherDataSuccess(snapshot.val()));
         }),
         function(error) {
