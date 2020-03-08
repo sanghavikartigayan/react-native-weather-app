@@ -79,9 +79,9 @@ function Item({route, navigation}) {
              bounces
              contentInset={{
               top: 0,
-              left: 30,
+              left: 20,
               bottom: 0,
-              right: 30,
+              right: 20,
             }}>
             {/* Card 1 */}
               <View style={styles.horizontalSwipCard}>
@@ -271,10 +271,11 @@ function Item({route, navigation}) {
   horizontalSwipCard: {
       marginTop: 10,
       marginBottom: 10,
-      marginHorizontal: 30,
+      marginLeft: 30,
+      marginRight: 10,
       borderRadius: 15,
       height: 300,
-      width: 350,
+      width: 320,
       alignItems: 'center',
       backgroundColor: Colors.white,
       elevation: 4,
@@ -295,7 +296,7 @@ function Item({route, navigation}) {
     width: width - 80,
     height: '40%',
     margin: 10,
-    padding: 10
+    paddingHorizontal: 25
   },
   content: {
     flexDirection: 'row',
