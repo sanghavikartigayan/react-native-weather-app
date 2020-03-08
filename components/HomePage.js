@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, ImageBackground, Text} from 'react-native';
 import {Button} from 'react-native-elements';
+import Colors from '../assets/utils';
 
 function HomePage({navigation}) {
     return ( 
@@ -39,7 +40,12 @@ const styles = StyleSheet.create({
     button: {
         padding: 10,
         shadowColor: '#E5E5E5',
-        marginTop: 10
+        marginTop: 10,
+        elevation: 4,
+        shadowColor: Colors.black,
+        shadowOffset: { width: 0, height: 2},
+        shadowRadius: 6,
+        shadowOpacity: 0.26,
     }
 })
 

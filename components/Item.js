@@ -229,9 +229,10 @@ function Item({route, navigation}) {
       shadowOpacity: 0.26,
   },
   divider: {
-      backgroundColor: 'white',
-      margin: 10
-  },
+    backgroundColor: 'white',
+    margin: 10,
+    height: 1
+},
   spinnerTextStyle: {
     color: 'black'
   },
