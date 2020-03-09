@@ -1,7 +1,6 @@
 import React from 'react';
 import { Text, TouchableHighlight, StyleSheet, View } from 'react-native';
 import Colors from '../assets/utils';
-import Item from './Item';
 import { useNavigation } from '@react-navigation/native';
 
 function ItemList({ item, navigation }) {
@@ -9,20 +8,20 @@ function ItemList({ item, navigation }) {
 
     return (
         <View>
-        <TouchableHighlight style={styles.container} underlayColor={Colors.primary} onPress={() => navigation.navigate('Date', {Date: item.Date, item: item})}>
-            <View style={styles.list}>
-                <View style={styles.LeftItem}>
-                    <Text style={styles.title}>{item.TempAvgF}° F</Text>
+            <TouchableHighlight style={styles.container} underlayColor={Colors.primary} onPress={() => navigation.navigate('Date', {Date: item.Date, item: item})}>
+                <View style={styles.list}>
+                    <View style={styles.LeftItem}>
+                        <Text style={styles.title}>{item.TempAvgF}° F</Text>
+                    </View>
+                    <View style={styles.RightItem}>
+                        <Text style={styles.subtitle}>{item.Events}</Text>
+                        <Text style={{textAlign: 'right'}}>{item.Date}</Text>
+                    </View>
                 </View>
-                <View style={styles.RightItem}>
-                    <Text style={styles.subtitle}>{item.Events}</Text>
-                    <Text style={{textAlign: 'right'}}>{item.Date}</Text>
-                </View>
-            </View>
-        </TouchableHighlight>   
+            </TouchableHighlight>   
         </View>            
     );
-  }
+}
 
 const styles = StyleSheet.create({
     container: {
@@ -55,4 +54,5 @@ const styles = StyleSheet.create({
         padding: 20
     }
 })
-  export default ItemList;
+
+export default ItemList;

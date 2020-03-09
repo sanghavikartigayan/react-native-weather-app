@@ -7,12 +7,12 @@ function HomePage({navigation}) {
     return ( 
        <View>
            <ImageBackground source={require('../assets/lineraGradient.png')} style={{width: '100%', height: '100%'}}>
-            <View style={styles.textContainer}>
-                <Text style={styles.title}>Austin</Text>
-                <Text style={styles.subtitle}>Weather</Text>
-                <Text style={styles.subtitle}>Application</Text>
-                <Button title="Explore" buttonStyle={styles.button} onPress={() => navigation.navigate('DateLists')} />
-            </View>
+                <View style={styles.textContainer}>
+                    <Text style={styles.title}>Austin</Text>
+                    <Text style={styles.subtitle}>Weather</Text>
+                    <Text style={styles.subtitle}>Application</Text>
+                    <Button title="Explore" buttonStyle={styles.button} onPress={() => navigation.navigate('DateLists')} />
+                </View>
            </ImageBackground>
         </View>
     );
@@ -48,6 +48,5 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.26,
     }
 })
-
 
 export default HomePage;

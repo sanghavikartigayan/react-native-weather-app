@@ -20,7 +20,6 @@ function ListView({onInitWeatherData, data, error, loading, message, navigation}
     let searchDate;
     const [filteredData, setFilteredData] = useState(null);
     const [resetFilter, setResetFilter] = useState(false);
-    const [buttonEnabled, setButtonEnabled] = useState(false);
 
     if(sorted) {
         data = data.slice().sort((a,b) => b.Date - a.Date);
@@ -65,9 +64,8 @@ function ListView({onInitWeatherData, data, error, loading, message, navigation}
         <View>
             <ImageBackground source={require('../assets/lineraGradient.png')} style={{width: '100%', height: '100%'}}>
                 <TouchableHighlight style={styles.cardContainer} underlayColor={Colors.primary} onPress={() => navigation.navigate('Date', {Date: currentDayData[0].Date, item: currentDayData[0]})}>
-                        {
-                         currentDayData[0] ?
-                          (
+                    { currentDayData[0] ?
+                        (
                             <View style={styles.topSection}>
                                 <View style={styles.card}>
                                     <Text style={styles.Title}>{currentDayData[0].TempAvgF}° F</Text>
@@ -80,8 +78,8 @@ function ListView({onInitWeatherData, data, error, loading, message, navigation}
                                      <MaterialCommunityIcons size={100} name='weather-sunny' color={'#fff'} /> 
                                 </View>
                             </View>
-                         )
-                             : 
+                        )
+                        : 
                         (
                             <View style={styles.topSection}>
                                 <View style={styles.card}>
@@ -89,10 +87,11 @@ function ListView({onInitWeatherData, data, error, loading, message, navigation}
                                 </View>
                             </View>
                         )  
-                        }
-                       
-                </TouchableHighlight>        
+                    }     
+                </TouchableHighlight>    
+
                 <Divider style={styles.divider} />
+
                 <View style={styles.functionality}>
                     <Text style={styles.byDate}>By Date</Text>
                     <View style={styles.filterSortSection}>
@@ -101,95 +100,104 @@ function ListView({onInitWeatherData, data, error, loading, message, navigation}
                         <Icon name='sort' type='font-awesome' color={Colors.white} onPress={() => setSorted(currentState => !currentState)} />
                     </View>
                 </View>
-                {
-                    filterSelected ?
+                { filterSelected ?
                     <View>
-                <View style={styles.filterContainer}>
-                    <Picker
-                        selectedValue={filterDay}
-                        style={styles.filterDate}
-                        onValueChange={(itemValue, itemIndex) => setFilterDay(itemValue)}>
-                        <Picker.Item label="DD" value="null" />
-                        <Picker.Item label="01" value="01" />
-                        <Picker.Item label="02" value="02" />
-                        <Picker.Item label="03" value="03" />
-                        <Picker.Item label="04" value="04" />
-                        <Picker.Item label="05" value="05" />
-                        <Picker.Item label="06" value="06" />
-                        <Picker.Item label="07" value="07" />
-                        <Picker.Item label="08" value="08" />
-                        <Picker.Item label="09" value="09" />
-                        <Picker.Item label="10" value="10" />
-                        <Picker.Item label="11" value="11" />
-                        <Picker.Item label="12" value="12" />
-                        <Picker.Item label="13" value="13" />
-                        <Picker.Item label="14" value="14" />
-                        <Picker.Item label="15" value="15" />
-                        <Picker.Item label="16" value="16" />
-                        <Picker.Item label="17" value="17" />
-                        <Picker.Item label="18" value="18" />
-                        <Picker.Item label="19" value="19" />
-                        <Picker.Item label="20" value="20" />
-                        <Picker.Item label="21" value="21" />
-                        <Picker.Item label="22" value="22" />
-                        <Picker.Item label="23" value="23" />
-                        <Picker.Item label="24" value="24" />
-                        <Picker.Item label="25" value="25" />
-                        <Picker.Item label="26" value="26" />
-                        <Picker.Item label="27" value="27" />
-                        <Picker.Item label="28" value="28" />
-                        <Picker.Item label="29" value="29" />
-                        <Picker.Item label="30" value="30" />
-                        <Picker.Item label="31" value="31" />
-                    </Picker>
-                    <Picker
-                        selectedValue={filterMonth}
-                        style={styles.filterDate}
-                        onValueChange={(itemValue, itemIndex) => setFilterMonth(itemValue)}>
-                        <Picker.Item label="MM" value="null" />
-                        <Picker.Item label="January" value="01" />
-                        <Picker.Item label="Febraury" value="02" />
-                        <Picker.Item label="March" value="03" />
-                        <Picker.Item label="April" value="04" />
-                        <Picker.Item label="May" value="05" />
-                        <Picker.Item label="June" value="06" />
-                        <Picker.Item label="July" value="07" />
-                        <Picker.Item label="August" value="08" />
-                        <Picker.Item label="September" value="09" />
-                        <Picker.Item label="October" value="10" />
-                        <Picker.Item label="November" value="11" />
-                        <Picker.Item label="December" value="12" />
-                    </Picker>
-                    <Picker
-                        selectedValue={filterYear}
-                        style={styles.filterDate}
-                        onValueChange={(itemValue, itemIndex) => setFilterYear(itemValue)}>
-                        <Picker.Item label="YYYY" value="null" />
-                        <Picker.Item label="2017" value="2017" />
-                        <Picker.Item label="2016" value="2016" />
-                        <Picker.Item label="2015" value="2015" />
-                        <Picker.Item label="2014" value="2014" />
-                        <Picker.Item label="2013" value="2013" />
-                    </Picker>
-                </View>
-                <View style={styles.filterContainerButton}>
-                    <Button title="Go" color={Colors.primary} onPress={() => applyFilter()} />
-                    <View style={{marginHorizontal: 8}}></View>
-                    <Button title="Reset" color='red' onPress={() => resetFilterCall()} />
-                </View>
-            </View>
-                : null}
+                        <View style={styles.filterContainer}>
+                        <Picker
+                            selectedValue={filterDay}
+                            style={styles.filterDate}
+                            onValueChange={(itemValue, itemIndex) => setFilterDay(itemValue)}>
+                           
+                            <Picker.Item label="DD" value="null" />
+                            <Picker.Item label="01" value="01" />
+                            <Picker.Item label="02" value="02" />
+                            <Picker.Item label="03" value="03" />
+                            <Picker.Item label="04" value="04" />
+                            <Picker.Item label="05" value="05" />
+                            <Picker.Item label="06" value="06" />
+                            <Picker.Item label="07" value="07" />
+                            <Picker.Item label="08" value="08" />
+                            <Picker.Item label="09" value="09" />
+                            <Picker.Item label="10" value="10" />
+                            <Picker.Item label="11" value="11" />
+                            <Picker.Item label="12" value="12" />
+                            <Picker.Item label="13" value="13" />
+                            <Picker.Item label="14" value="14" />
+                            <Picker.Item label="15" value="15" />
+                            <Picker.Item label="16" value="16" />
+                            <Picker.Item label="17" value="17" />
+                            <Picker.Item label="18" value="18" />
+                            <Picker.Item label="19" value="19" />
+                            <Picker.Item label="20" value="20" />
+                            <Picker.Item label="21" value="21" />
+                            <Picker.Item label="22" value="22" />
+                            <Picker.Item label="23" value="23" />
+                            <Picker.Item label="24" value="24" />
+                            <Picker.Item label="25" value="25" />
+                            <Picker.Item label="26" value="26" />
+                            <Picker.Item label="27" value="27" />
+                            <Picker.Item label="28" value="28" />
+                            <Picker.Item label="29" value="29" />
+                            <Picker.Item label="30" value="30" />
+                            <Picker.Item label="31" value="31" />
+                        </Picker>
+                        <Picker
+                            selectedValue={filterMonth}
+                            style={styles.filterDate}
+                            onValueChange={(itemValue, itemIndex) => setFilterMonth(itemValue)}>
+                        
+                            <Picker.Item label="MM" value="null" />
+                            <Picker.Item label="January" value="01" />
+                            <Picker.Item label="Febraury" value="02" />
+                            <Picker.Item label="March" value="03" />
+                            <Picker.Item label="April" value="04" />
+                            <Picker.Item label="May" value="05" />
+                            <Picker.Item label="June" value="06" />
+                            <Picker.Item label="July" value="07" />
+                            <Picker.Item label="August" value="08" />
+                            <Picker.Item label="September" value="09" />
+                            <Picker.Item label="October" value="10" />
+                            <Picker.Item label="November" value="11" />
+                            <Picker.Item label="December" value="12" />
+                        </Picker>
+                        <Picker
+                            selectedValue={filterYear}
+                            style={styles.filterDate}
+                            onValueChange={(itemValue, itemIndex) => setFilterYear(itemValue)}>
+                        
+                            <Picker.Item label="YYYY" value="null" />
+                            <Picker.Item label="2017" value="2017" />
+                            <Picker.Item label="2016" value="2016" />
+                            <Picker.Item label="2015" value="2015" />
+                            <Picker.Item label="2014" value="2014" />
+                            <Picker.Item label="2013" value="2013" />
+                        </Picker>
+                        </View>
+                        <View style={styles.filterContainerButton}>
+                            <Button title="Go" color={Colors.primary} onPress={() => applyFilter()} />
+                            <View style={{marginHorizontal: 8}}></View>
+                            <Button title="Reset" color='red' onPress={() => resetFilterCall()} />
+                        </View>
+                    </View>
+                    : 
+                    null
+                }
+
                 {(!loading && data && !filteredData) ?
-                (<FlatList
-                    data={data}
-                    renderItem={({ item }) => <ItemList item={item} />}
-                    keyExtractor={item => item.Date}
+                    (<FlatList
+                        data={data}
+                        renderItem={({ item }) => <ItemList item={item} />}
+                        keyExtractor={item => item.Date}
                     />
-                ) :<FlatList
-                    data={filteredData}
-                    renderItem={({ item }) => <ItemList item={item} />}
-                    keyExtractor={item => item.Date}
-                />}
+                    ) 
+                :
+                    (<FlatList
+                        data={filteredData}
+                        renderItem={({ item }) => <ItemList item={item} />}
+                        keyExtractor={item => item.Date}
+                    />
+                    )
+                }
            </ImageBackground>
         </View>
     );
@@ -300,8 +308,7 @@ const styles = StyleSheet.create({
         height: 50,
         width: 100
     }
-
-  });
+});
 
 const mapStateToProps = state => {
     const { data, loading, error, message } = state.fetchDataReducer;
