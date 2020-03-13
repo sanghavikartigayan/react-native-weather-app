@@ -4,6 +4,11 @@ The react native weather application enables user to explore the Austin Weather 
 
 ## Design on Figma
 
+Primary color: #7DF2F2 (Nice sky blue) 
+Secondary color: #C4C4C4 (Grey) 
+Tertiary color: #E5E5E5 (Light Grey) 
+Other basic colors: Black and White 
+
 The UI of the application was designed on Figma: [demo](https://www.figma.com/proto/XQ4guDnryNxtibTy4g1G2s/Austin-Weather-App?node-id=1%3A23&scaling=scale-down), and then developed using React native and react native elements.
 
 ## How to run the application
@@ -15,6 +20,13 @@ npm install
 ```
 
 This will install all the dependencies and packages needed to run the project.
+
+Database : Firebase 
+State management : redux, react-redux (Connecting component & redux state) 
+Async API Call : react-thunk 
+API Calls : react-axios-middleware 
+Routing/Navigation : @react-native-community/masked-view, @react-navigation/native, @react-navigation/stack, react-native-gesture-handler, react-native-reanimated, react-native-safe-area-context, react-native-screens. 
+Styling : react-native-elements 
 
 Next, run the application by running the following command
 
