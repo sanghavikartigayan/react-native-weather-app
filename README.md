@@ -18,7 +18,7 @@ Next, run the application by running the following command
 npm start
 ```
 
-This opens the localhost on the browser (Metro bundler), where you can find the bar code to scan and run the application on Emulators. 
+This opens the localhost on the browser (Metro bundler), where you can find options to run the application on Emulators. 
 You can use Android studio for android emulators and Xcode for ios emulator.
 
 Alternatively, you can download Expo application from your app Store on iphone, scan the barcode which in turn opens the project on Expo on your phone.
