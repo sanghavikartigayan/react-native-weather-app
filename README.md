@@ -16,12 +16,12 @@ npm install
 
 This will install all the dependencies and packages needed to run the project.
 
-Database : Firebase 
-State management : redux, react-redux (Connecting component & redux state) 
-Async API Call : react-thunk 
-API Calls : react-axios-middleware 
-Routing/Navigation : @react-native-community/masked-view, @react-navigation/native, @react-navigation/stack, react-native-gesture-handler, react-native-reanimated, react-native-safe-area-context, react-native-screens. 
-Styling : react-native-elements 
+* Database : Firebase 
+*State management : redux, react-redux (Connecting component & redux state) 
+*Async API Call : react-thunk 
+*API Calls : react-axios-middleware 
+*Routing/Navigation : @react-native-community/masked-view, @react-navigation/native, @react-navigation/stack, react-native-gesture-handler, react-native-reanimated, react-native-safe-area-context, react-native-screens. 
+*Styling : react-native-elements 
 
 Next, run the application by running the following command
 
