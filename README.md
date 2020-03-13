@@ -35,4 +35,4 @@ You can use Android studio for android emulators and Xcode for ios emulator.
 Alternatively, you can download Expo application from your app Store on iphone, scan the barcode which in turn opens the project on Expo on your phone.
 
 ## License
-[MIT] Licensed. Copyright (c) [Sanghavi Kartigayan](https://github.com/sanghavikartigayan) 2020.
+Copyright (c) [Sanghavi Kartigayan](https://github.com/sanghavikartigayan) 2020.
