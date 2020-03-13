@@ -12,7 +12,7 @@ npm install
 
 This will install all the dependencies and packages needed to run the project.
 
-Next, run the application on localhost by doing
+Next, run the application by running the following command
 
 ```bash
 npm start
