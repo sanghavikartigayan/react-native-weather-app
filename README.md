@@ -2,12 +2,7 @@
 
 The react native weather application enables user to explore the Austin Weather Forecast based on various period in a year.
 
-## Design on Figma
-
-Primary color: #7DF2F2 (Nice sky blue) 
-Secondary color: #C4C4C4 (Grey) 
-Tertiary color: #E5E5E5 (Light Grey) 
-Other basic colors: Black and White 
+## UI Design
 
 The UI of the application was designed on Figma: [demo](https://www.figma.com/proto/XQ4guDnryNxtibTy4g1G2s/Austin-Weather-App?node-id=1%3A23&scaling=scale-down), and then developed using React native and react native elements.
 
