@@ -1,19 +1,24 @@
 import React from 'react';
-import { StyleSheet, View, ImageBackground, Text} from 'react-native';
-import {Button} from 'react-native-elements';
+import { StyleSheet, View, ImageBackground, Text } from 'react-native';
+import { Button } from 'react-native-elements';
 import Colors from '../assets/utils';
 
-function HomePage({navigation}) {
-    return ( 
-       <View>
-           <ImageBackground source={require('../assets/lineraGradient.png')} style={{width: '100%', height: '100%'}}>
+function HomePage({ navigation }) {
+    return (
+        <View>
+            <ImageBackground
+                source={require('../assets/lineraGradient.png')}
+                style={{ width: '100%', height: '100%' }}>
                 <View style={styles.textContainer}>
                     <Text style={styles.title}>Austin</Text>
                     <Text style={styles.subtitle}>Weather</Text>
                     <Text style={styles.subtitle}>Application</Text>
-                    <Button title="Explore" buttonStyle={styles.button} onPress={() => navigation.navigate('DateLists')} />
+                    <Button
+                        title="Explore"
+                        buttonStyle={styles.button}
+                        onPress={() => navigation.navigate('DateLists')} />
                 </View>
-           </ImageBackground>
+            </ImageBackground>
         </View>
     );
 }
@@ -43,7 +48,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         elevation: 4,
         shadowColor: Colors.black,
-        shadowOffset: { width: 0, height: 2},
+        shadowOffset: { width: 0, height: 2 },
         shadowRadius: 6,
         shadowOpacity: 0.26,
     }
